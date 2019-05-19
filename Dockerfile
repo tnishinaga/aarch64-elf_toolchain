@@ -30,6 +30,7 @@ RUN apt-get update \
         qemu-system-arm \
         tmux \
         iputils-ping \
+        git \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
