@@ -1,8 +1,6 @@
 FROM ubuntu:disco
 LABEL Toshifumi NISHINAGA <tnishinaga.dev@gmail.com>
 
-RUN echo "deb http://ja.archive.ubuntu.com/ubuntu disco main universe" > /etc/apt/sources.list
-
 # install curl first to install aarch64-toolchain
 # bacause this download takes long time
 RUN apt-get update \
@@ -12,7 +10,6 @@ RUN apt-get update \
         libtinfo5 \
         libncursesw5 \
         libpython2.7 \
-        iputils-ping \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -32,6 +29,7 @@ RUN apt-get update \
         less \
         qemu-system-arm \
         tmux \
+        iputils-ping \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
