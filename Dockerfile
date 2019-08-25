@@ -31,6 +31,15 @@ RUN apt-get update \
         tmux \
         iputils-ping \
         git \
+        gnupg2 \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# install llvm tools
+COPY llvm.list /etc/apt/sources.list.d/llvm.list
+RUN curl -sL https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - \
+    && apt-get update \
+    && apt-get install -y clang-10 lldb-10 lld-10 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
